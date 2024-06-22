@@ -3,6 +3,7 @@
 use rocket_cors::CorsOptions;
 use serde::{Deserialize, Serialize};
 
+// ディスカッションのリストを表す構造体
 #[derive(Serialize, Deserialize, Debug)]
 struct DiscussAbstract {
     id: String, // SQL上のID
@@ -10,6 +11,12 @@ struct DiscussAbstract {
     start_time: u64,
     title: String,
     abst: String,
+}
+
+// あるディスカッションのログの全てを表す構造体
+#[derive(Serialize, Deserialize, Debug)]
+struct DiscussLog {
+    
 }
 
 #[get("/all")]
@@ -32,6 +39,11 @@ fn get_all_discussions() -> String {
     ];
 
     serde_json::to_string(&mock).unwrap()
+}
+
+#[get("/<id>")]
+fn get_discussion_log_by_id(id: String) -> String {
+
 }
 
 #[get("/")]
